@@ -1,0 +1,20 @@
+version: "3.2"
+services:
+  db:
+    container_name: eshop-database
+    image: postgres
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: "exit 0"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ecommerce
+    volumes:
+      - /var/lib/postgresql/data
+    networks:
+      - db_net
+networks:
+  db_net:
+    driver: bridge
